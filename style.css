@@ -64,5 +64,11 @@ main{
 
 /* interests section styles */
 #interests {
-    border: 
+    border: 4px silver ridge;
+    padding: 8px;
+    margin-top: 20px;
+}
+
+h2, h3 {
+    margin: 0px;
 }
