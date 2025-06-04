@@ -1,25 +1,28 @@
 body{
-    background: rgb(125, 198, 205);
-    color: rgb(45, 45, 45);
+    background: rgb(49, 0, 210);
+    color: rgb(0, 0, 0);
     padding: 10px;
-    font-family: Arial, sans-serif;
+    font-family: Helvetica;
 }
 #allcontents{
     max-width: 800px;
     margin: auto;
+    font-size:20px;
+    font-family:Verdana,Tahoma,sans-serif
 }
 /* navigation menu */ 
 nav {
-    background: rgb(239, 90, 41);
-    margin: 0 atuo;
+    background: rgb(2, 243, 126);
+    margin: 1 atuo;
     display: flex;
     padding: 10px;
+    border-radius: 30px;
 }
 
 h1 {
     display: flex;
     align-items: center;
-    color: white;
+    color: rgb(0, 0, 0);
     flex: 1;
     margin: 0
 }
@@ -33,7 +36,7 @@ h1 {
 
 .nav-li {
     display: inline-block;
-    padding: 0 10px;
+    padding: 10px;
 }
 
 a {
@@ -46,15 +49,20 @@ main{
     background: rgb(245, 238, 219);
     display: flex;
     margin-top: 20px;
+    padding: 15px;
+    border-radius: 20px
+    position; 
 }
 
 .sidebar {
     margin-right: 25px;
     padding: 10px;
+    border-radius: 15px;
 }
 
 .sidebar-img {
-    width: 200px;
+    width: 800px;
+    border-radius: 10px;
 }
 
 .content {
@@ -64,11 +72,94 @@ main{
 
 /* interests section styles */
 #interests {
-    border: 4px silver ridge;
-    padding: 8px;
-    margin-top: 20px;
+    border: 40px rgb(10, 38, 195);
+    padding: 6px;
+    margin-top: 30px;
+    font-size: 20px;
 }
 
 h2, h3 {
-    margin: 0px;
+    margin: 10px;
+    font-size: 36px;
+}
+
+li {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+
+
+
+/* Portfolio styles */
+.content h1 {
+    color: black;
+}
+
+#portfolio {
+    list-style-type: none;
+    padding-left: 20;
+}
+
+#portfolio li {
+    background: #6a00ff;
+    padding: 15px;
+    border-radius: 18px;
+    margin-bottom: 40px;
+}
+
+#portfolio a {
+    background: #eaff00;
+    border-radius: 5px;
+}
+
+#portfolio a{
+    text-decoration: none;
+    color: #00bfff;
+}
+
+/* responsive web design */
+ @media screen and (min-width: 120px) and (max-width: 1080px) {
+    main {
+        height: 100ch;
+        zoom: 1.5;
+        display: grid;
+    }
+
+    h1 {
+    font-size: 44px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    #all-contents {
+        height: 100ch;
+        margin: none;
+    }
+
+    a{
+        font-size: 42px;
+    }
+
+    .sidebar {
+        margin-right: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sidebar-img {
+        width:100%
+    }
+
+    p,
+    li {
+        font-size: 24px;
+    }
+
+    .content{
+        align-content: center;
+        justify-content: center;
+    }
 }
