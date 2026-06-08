@@ -65,18 +65,20 @@ $(document).ready(function () {
     animationDetails.displayType = 2;
   }
   // TODO 5-a: add a function that handles the bad display type
-function handleBad(data, repeat) {
-repeat += 1;
-setBackgroundWithMixed(data, repeat);
-animationDetails.displayType = 3;
-
-}
+  function handleBad(data, repeat) {
+    resetDisplay();
+    currentIndex = Math.floor(Math.random() * dataShapes.length);
+    repeat += 1;
+    setBackgroundWithMixed(dataShapes[currentIndex], repeat);
+    animationDetails.displayType = 3;
+  }
   /////////////////////////////////////////////////
   // BUTTON HANDLERS BELOW HERE (3-b, 4-b, 5-b) ///
   /////////////////////////////////////////////////
 
   function staticDisplay() {
     // TODO 3-b: call your handleStatic function
+    const currentShape = dataShapes[currentIndex];
     handleStatic(currentShape);
   }
 
@@ -88,11 +90,10 @@ animationDetails.displayType = 3;
 
   function badDisplay() {
     // TODO 5-b: call your handleBad function
-var currentShape = dataShapes[currentIndex];
-var repeat = currentShape.repeat;
-handleBad(currentShape, repeat);
+    const currentShape = dataShapes[currentIndex];
+    const repeat = currentShape.repeat;
+    handleBad(currentShape, repeat);
   }
-
   /////////////////////////////////////////////////
   // ALL OF YOUR CODE SHOULD GO ABOVE HERE ////////
   /////////////////////////////////////////////////
