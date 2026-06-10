@@ -13,12 +13,15 @@ var highScoreElement = $("#highScore");
 var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 
+
 // TODO 4, Part 1: Create the apple variable
 var apple = {};
 
 // TODO 5, Part 1: Create the snake variable
 const snake = {};
-
+//bonus
+var colors = ["red", "orange", "yellow", "green", "blue", "purple"];
+var colorIndex = 0;
 // Constant Variables
 var ROWS = 20;
 var COLUMNS = 20;
@@ -206,6 +209,8 @@ function handleAppleCollision() {
   var column = snake.tail.column;
 
   makeSnakeSquare(row, column);
+  snake.tail.element.css("backgroundColor", colors[colorIndex]);
+colorIndex = colorIndex + 1 % colors.length;
 }
 
 function hasCollidedWithSnake() {
@@ -218,11 +223,10 @@ function hasCollidedWithSnake() {
         return true;
       }
     }
-    else {
-      return false;
-    }
+    
+    
   }
-
+ 
 
 
    /* HINT: Each part of the snake's body is stored in the snake.body Array. The
@@ -244,7 +248,7 @@ function endGame() {
   highScoreElement.text("High Score: " + calculateHighScore());
   scoreElement.text("Score: 0");
   score = 0;
-
+  colorIndex = 0;
   // restart the game after 500 ms
   setTimeout(init, 500);
 }
@@ -299,6 +303,7 @@ function makeSnakeSquare(row, column) {
   // add the square to the snake’s body and update the tail
   snake.body.push(snakeSquare);
   snake.tail = snakeSquare;
+
 }
 
 /* 
@@ -382,3 +387,9 @@ function calculateHighScore() {
 
   return highScore;
 }
+
+
+//Bonus challenges below here
+
+
+
