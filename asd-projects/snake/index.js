@@ -180,11 +180,17 @@ function hasCollidedWithApple() {
   /* 
     TODO 12: Should return true if the snake's head has collided with the apple, 
     false otherwise
-    
-    HINT: Both the apple and the snake's head are aware of their own row and column
   */
-
+  if (snake.head.row === apple.row) {
+    if (snake.head.column === apple.column){
+    return true;
+  }
+}
+   /* HINT: Both the apple and the snake's head are aware of their own row and column
+  */
+else {
   return false;
+}
 }
 
 function handleAppleCollision() {
@@ -205,9 +211,21 @@ function handleAppleCollision() {
 function hasCollidedWithSnake() {
   /* 
     TODO 13: Should return true if the snake's head has collided with any part of the
-    snake's body.
-    
-    HINT: Each part of the snake's body is stored in the snake.body Array. The
+    snake's body.  */
+  for (var i = 1; i <= snake.body.length - 1; i++) {
+    if (snake.head.row === snake.body[i].row) {
+      if (snake.head.column === snake.body[i].column) {
+        return true;
+      }
+    }
+    else {
+      return false;
+    }
+  }
+
+
+
+   /* HINT: Each part of the snake's body is stored in the snake.body Array. The
     head and each part of the snake's body also knows its own row and column.
   */
 
@@ -333,6 +351,11 @@ function getRandomAvailablePosition() {
 
   /* Generate random positions until one is found that doesn't overlap with the snake */
   while (!spaceIsAvailable) {
+    if (randomPosition.row === snake.head.row) {
+      if (randomPosition.column === snake.head.column) {
+        return spaceIsAvailable = false; 
+      }
+    }
     randomPosition.column = Math.floor(Math.random() * COLUMNS);
     randomPosition.row = Math.floor(Math.random() * ROWS);
     spaceIsAvailable = true;
