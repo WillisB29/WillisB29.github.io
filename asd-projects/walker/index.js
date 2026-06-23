@@ -19,6 +19,8 @@ function runProgram() {
     RIGHT: 39,
     DOWN: 40,
   };
+
+
   var walker = {
     x: 0,
     y: 0,
@@ -35,7 +37,7 @@ function runProgram() {
   Note: You can have multiple event listeners for different types of events.
   */
   $(document).on("keydown", handleKeyDown);
-
+$(document).on("keyup", handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +48,7 @@ function runProgram() {
   */
   function newFrame() {
     repositionGameItem();
+    wallCollision();
     redrawGameItem();
     console.log("Walker position:", walker.x, walker.y);
   }
@@ -74,6 +77,18 @@ function runProgram() {
       console.log("down pressed");
       walker.speedY = 5;
     }
+
+  
+  }
+
+
+  function handleKeyUp(event) {
+    if(event.which === KEY.LEFT || event.which === KEY.RIGHT) { 
+      walker.speedX = 0;
+    }
+    if(event.which === KEY.UP || event.which === KEY.DOWN) { 
+      walker.speedY = 0;
+    }
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -96,4 +111,20 @@ function runProgram() {
     $("#walker").css("left", walker.x);
     $("#walker").css("top", walker.y);
   }
+
+function wallCollision() {
+  if (walker.x < 0) {
+    walker.x = 0;
+  } else if (walker.x + walkerWidth > boardWidth) {
+    walker.x = boardWidth - walkerWidth;
+  }
+
+  if (walker.y < 0) {
+    walker.y = 0;
+  } else if (walker.y + walkerHeight > boardHeight) {
+    walker.y = boardHeight - walkerHeight;
+  }
+}
+
+
 }
