@@ -20,6 +20,10 @@ function runProgram() {
     DOWN: 40,
   };
 
+  var boardWidth = $("#board").width();
+  var boardHeight = $("#board").height();
+  var walkerWidth = $("#walker").width();
+  var walkerHeight = $("#walker").height();
 
   var walker = {
     x: 0,
@@ -27,6 +31,13 @@ function runProgram() {
     speedX: 1,
     speedY: 1,
   };
+
+  //Bonus Challenge below here:
+  function handleWalkerClick() {
+    var colors = ["red", "blue", "yellow", "cyan", "magenta", "lime", "orange"];
+    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+    $("#walker").css("background-color", randomColor);
+  }
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL); // execute newFrame every 0.0166 seconds (60 Frames per second)
 
@@ -37,7 +48,8 @@ function runProgram() {
   Note: You can have multiple event listeners for different types of events.
   */
   $(document).on("keydown", handleKeyDown);
-$(document).on("keyup", handleKeyUp);
+  $(document).on("keyup", handleKeyUp);
+  $("#walker").on("click", handleWalkerClick);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -77,16 +89,13 @@ $(document).on("keyup", handleKeyUp);
       console.log("down pressed");
       walker.speedY = 5;
     }
-
-  
   }
 
-
   function handleKeyUp(event) {
-    if(event.which === KEY.LEFT || event.which === KEY.RIGHT) { 
+    if (event.which === KEY.LEFT || event.which === KEY.RIGHT) {
       walker.speedX = 0;
     }
-    if(event.which === KEY.UP || event.which === KEY.DOWN) { 
+    if (event.which === KEY.UP || event.which === KEY.DOWN) {
       walker.speedY = 0;
     }
   }
@@ -112,19 +121,17 @@ $(document).on("keyup", handleKeyUp);
     $("#walker").css("top", walker.y);
   }
 
-function wallCollision() {
-  if (walker.x < 0) {
-    walker.x = 0;
-  } else if (walker.x + walkerWidth > boardWidth) {
-    walker.x = boardWidth - walkerWidth;
+  function wallCollision() {
+    if (walker.x < 0) {
+      walker.x = 0;
+    } else if (walker.x + walkerWidth > boardWidth) {
+      walker.x = boardWidth - walkerWidth;
+    }
+
+    if (walker.y < 0) {
+      walker.y = 0;
+    } else if (walker.y + walkerHeight > boardHeight) {
+      walker.y = boardHeight - walkerHeight;
+    }
   }
-
-  if (walker.y < 0) {
-    walker.y = 0;
-  } else if (walker.y + walkerHeight > boardHeight) {
-    walker.y = boardHeight - walkerHeight;
-  }
-}
-
-
 }
