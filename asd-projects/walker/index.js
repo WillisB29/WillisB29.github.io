@@ -28,8 +28,8 @@ function runProgram() {
   var walker = {
     x: 0,
     y: 0,
-    speedX: 1,
-    speedY: 1,
+    speedX: 0,
+    speedY: 0,
   };
 
   //Bonus Challenge below here:

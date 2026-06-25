@@ -13,8 +13,8 @@ body {
 
 #walker {
   background-color: darkgreen;
-  width: 15px;
-  height: 25px;
+  width: 25px;
+  height: 40px;
   position: absolute;
   cursor: pointer;
 /*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
